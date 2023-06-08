@@ -1,17 +1,23 @@
 import React from "react";
-
-const Card = ({ photo, title, price }) => {
-  return (
-    <div className="flex flex-col items-center justify-center ">
-      <img src={photo} alt="" className="w-52 h-56 rounded-[1rem]" />
-      <div className="flex justify-between w-[13rem]">
-        <p className="font-bold text-[13px] ">
-          {title + "Rapid Charger & Stylus Pen  "}
-        </p>
-        <p className="font-bold">{price}</p>
-      </div>
+import jacket3 from "../assets/laptop.png";
+import "./card.css"
+const Card = ({category,images}) => {
+return (
+  <div className="category-container">
+    <h2>{category}</h2>
+    <div className="scrollable-row">
+      {images.map((image, index) => (
+        <div className="image-item" key={index}>
+          <img src={images.image!=null?images.image:jacket3} alt={images.productName} />
+          <div className="image-info">
+            <p className="image-name">{images.productName}</p>
+            <p className="image-price">{images.price}</p>
+          </div>
+        </div>
+      ))}
     </div>
-  );
+  </div>
+);
 };
 
 export default Card;

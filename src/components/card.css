@@ -1,0 +1,12 @@
+.scrollable-row {
+    display: flex;
+    overflow-x: scroll;
+    /* Add desired styles for the scrollable row */
+  }
+  .card-container{
+    display: flex;
+  /* justify-content:center;
+  align-items: center;
+  font-size: 1.2rem; */
+  flex-direction: row;
+  }

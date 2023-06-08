@@ -24,3 +24,6 @@ code {
     rgba(255, 255, 255, 0) 46%
   );
 }
+.absolute bg-white br3 br--bottom left-0 lh-copy mt3 overflow-hidden shadow-1{
+  margin-top: 12px; left: 50%; transform: none; margin-left: -135px; max-height: 747px;
+}
