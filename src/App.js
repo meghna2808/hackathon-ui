@@ -12,6 +12,7 @@ import SportsFitness from "./pages/SportsFitness";
 import HomeFurniture from "./pages/HomeFurniture";
 import formPage from "./pages/formPage";
 import FormPage from "./pages/formPage";
+import ProductDetails from "./pages/ProductDetails";
 const App=() =>{
   const options=['Option 1','Option 2']
   return (
@@ -30,6 +31,7 @@ const App=() =>{
       <Route path='/Sports & Fitness' element={<SportsFitness/>}/>
       <Route path='/Home & Furniture' element={<HomeFurniture/>}/>
       <Route path='/formPage' element={<FormPage/>}/>
+      <Route exact path="/products/:productName" element={<ProductDetails/>} />
       </Routes>
     </div>
     </Router>

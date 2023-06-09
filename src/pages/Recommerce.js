@@ -17,32 +17,35 @@ const Recommerce = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get('http://localhost:8080/recom/categories/products/');
-      // console.log(response);
+      console.log(response);
       setData(response.data);
     } catch (error) {
       console.log('Error fetching data:', error);
     }
   };
-  function addCategoryImage(category) {
-    let imageSrc = jacket3;
+  // function addCategoryImage(category) {
+  //   let imageSrc = jacket3;
   
-    switch (category) {
-      case "Sports & Fitness":
-        imageSrc = sports;
-        break;
-      case 'category2':
-        imageSrc = 'path/to/category2-image.jpg';
-        break;
-      case 'category3':
-        imageSrc = 'path/to/category3-image.jpg';
-        break;
-      // Add more cases for other categories as needed
-      default:
-        imageSrc = sports;
-    }
+  //   switch (category) {
+  //     case "Sports & Fitness":
+  //       imageSrc = sports;
+  //       break;
+  //     case 'category2':
+  //       imageSrc = 'path/to/category2-image.jpg';
+  //       break;
+  //     case 'category3':
+  //       imageSrc = 'path/to/category3-image.jpg';
+  //       break;
+  //     // Add more cases for other categories as needed
+  //     default:
+  //       imageSrc = sports;
+  //   }
   
-    return imageSrc;
-  }
+  //   return imageSrc;
+  // }
+  const handleImageError = (event) => {
+    event.target.src = ''; // Replace with the fallback image URL or any placeholder image
+  };
 
   return (
     <div className='modal-bg'>
@@ -51,7 +54,7 @@ const Recommerce = () => {
         to='/formPage'
         className='button-container'
       >
-        <Button className='blue-button'>Want to sell your product</Button>
+        <Button className='blue-button'><b>Want to sell your product</b></Button>
         {/* <Button className='blue-botton'>View All</Button> */}
       </Link>
 
@@ -80,13 +83,24 @@ const Recommerce = () => {
                       
                   </div>
                   {data[category].map(product => (
-                    <div key={product.productName} style={{ margin: '20px' }}>
-                      <div className="image-cnt">
-                        <img src={product.image != null ? product.image : jacket3} alt={product.productName} width="200" height="200" />
-                        </div>
-                      <p className="product-name">{product.productName}</p>
-                      <p className="price">{product.price}</p>
-                    </div>
+                    <div>
+                    {product.imageUrls &&(<div key={product.productName} style={{ margin: '20px',padding:"" }}>
+
+                    <div className="image-cnt">
+                      <img className="image-cnt"src={product.imageUrls} alt={product.productName} width="100%" height="100%" onError={handleImageError} />
+                      </div>
+                    <p className="product-name">{product.productName}</p>
+                    <p className="price">{product.price}</p>
+                  </div>)}
+                  </div>
+                    // <div key={product.productName} style={{ margin: '20px',padding:"" }}>
+
+                    //   <div className="image-cnt">
+                    //     <img className="image-cnt"src={product.imageUrls!=null?product.imageUrls:jacket3} alt={product.productName} width="100%" height="100%" onError={handleImageError} />
+                    //     </div>
+                    //   <p className="product-name">{product.productName}</p>
+                    //   <p className="price">{product.price}</p>
+                    // </div>
                   ))}
                 </div>
               </div>
